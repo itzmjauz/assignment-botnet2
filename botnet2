@@ -1,0 +1,47 @@
+1  By Antoni Stevenet
+====================================================================================
+[ length byte ] [ description byte ( unique per messages ) ] [ session - id ] ... extra 
+
+first byte decribes the length of the package.
+the second byte seems to describe specific messages,
+so  for example; Hi, Bye, Command, etc.
+
+the third to tenth byte are the unique, session-id
+
+the last five bytes of the first package describe the
+OS-version : 6c 69 6e 75 78 ( linux )
+
+13 = hi , Os version
+37 = hi - checksum
+14 = ok ( ready to receive command )
+39 = seems to be command, the byte after the session byes, links to a specific
+command,  00,01,02,03
+
+00 ~ follows with an encrypted message , seems to do the same as get-credentials
+from the last assignment.
+the encrypted message is RC4, with session-id as the key, the encrypted message is :
+s	k	y	p	e	=	(	j	o	h	n	d	o	e	,	P
+4	s	s	w	0	r	d	)		g	m	a	i	l	=	(
+j	o	h	n	d	o	e	@	g	m	a	i	l	.	c	o
+m	,	p	l	z	D	0	n	t	H	4	x	x	o	r	M
+e	)		c	h	e	c	k	s	u	m	=	5	7	8	1
+5	c	1	1	1	6
+
+
+
+01 ~ ( spam )
+seems to grab a link for software/malware, to download for the client
+
+02 ~ ( ddos )
+seems to need a link too, and likely does the same as ddos from the last assignment
+
+03 ~ ( install spam ?)
+needs a link too.
+
+16 = received, the last 4 bytes are always the same d1 07 00 00 
+3a = another ok mssg - server   ( end with  00 )
+17 = bye-client 
+3b = bye-server
+
+2
+=========================================================================================
